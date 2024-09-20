@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Meditation and Pranayam</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #f0f0f0;
+            background-image: url('images/bg.jpg');
+            background-size: cover;
+            background-attachment:fixed; /* Ensure background image stays fixed */
+            font-family:'Big shoulders Display',sans-serif; /* Changed font-family */
+
+            margin: 0;
+        }
+        .hero-bg {
+            background-image: url('https://source.unsplash.com/1600x900/?meditation');
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            position: fixed; /* Fix image position */
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: -1; /* Make sure it stays behind other content */
+        }
+        .header {
+            font-family:'Big shoulders Display',sans-serif;
+            text-transform: uppercase;
+            text-align: center; /* Centers the text */
+            font-size: 2.5rem; /* Adjust the font size */
+            color: #faf2f2; /* Set the text color */
+            font-weight: bold; /* Makes the text bold */
+            margin-top: 20px; /* Optional: Adds some space above the h1 */
+        }
+        .thought-box {
+            font-family:monospace;
+            border-radius: 8px;
+            padding: 20px;
+            max-width: 600px;
+            margin: 20px auto;
+           box-shadow: 0 6px 6px rgba(0, 0, 0, 0.5);
+
+        }
+        .thought-text {
+        
+            font-weight: bold;
+            font-size: 1.75rem;
+            color: #f0f0ff;
+        }
+        .feedback-form-container {
+            background-color: rgba(58, 55, 55, 0.8); /* Added transparency */
+            max-width: 400px; 
+            margin: 0 auto;  
+            padding: 16px;
+            border-radius: 8px;
+        }
+        .meditation-thought-section {
+            padding-top: 12px;
+            padding-bottom: 12px;
+        }
+        .feature-box {
+         
+            border-radius: 12px;
+            padding: 1.5rem;
+            max-width: 1210px;
+            margin: 20px auto; /* Center-align feature boxes */
+            background: rgba(0, 0, 0, 0.5); /* Slightly transparent background */
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .feature-box:nth-child(odd) .feature-content {
+            order: 1; /* Move content to the right for odd boxes */
+        }
+        .feature-box:nth-child(even) .feature-content {
+            order: -1; /* Move content to the left for even boxes */
+        }
+        .feature-image-wrapper {
+            flex-shrink: 0; /* Prevent image from shrinking */
+            display: flex;
+            align-items: center; /* Center image vertically */
+            justify-content: center; /* Center image horizontally */
+        }
+        .feature-image-wrapper img {
+            width: 200px; /* Adjust image size */
+            height: 200px;
+            border-radius: 50%; /* Circular image */
+            object-fit: cover; /* Maintain aspect ratio */
+        }
+        .feature-content {
+            flex-grow: 1; /* Make content take available space */
+            text-align: center; /* Center text */
+        }
+        .feature-content h2 {
+            font-weight: bold;
+            font-size: 1.75rem; /* Adjust font size */
+            color: whitesmoke; /* White text for titles */
+            margin-bottom: 0.5rem; /* Spacing below title */
+        }
+        .feature-content p {
+            font-size: 1.25rem; /* Adjust font size */
+            color: rgb(167, 162, 162); /* Light gray text for descriptions */
+        }
+        .explore {
+            text-transform: uppercase;
+            text-align: center; /* Centers the text */
+            font-size: 1.75rem; /* Adjust the font size */
+            color: #e4d1d1; /* Set the text color */
+            font-weight: bold; /* Makes the text bold */
+            margin-top: 20px;
+
+        }
+        .divider {
+            border-top: 1px solid #555; /* Line color */
+            margin: 40px 0; /* Margin above and below the line */
+        }
+        header, footer {
+            /* Added transparency */
+        }
+       .line {
+            border: 10px;
+            border-top: 3px solid #baadad; /* Line color */
+            margin: 10px 0; /* Margin above and below the line */
+        }
+        .line2{
+            border: 10px;
+            border-top: 2px solid #baadad; /* Line color */
+            margin: 10px 0; /* Margin above and below the line */
+        }
+        .mr-5{
+            text-align: center;
+        }
+        .feature-row1 {
+    display: flex;
+    justify-content: space-between; /* Distributes space between items */
+    flex-wrap: wrap; /* Allows wrapping if screen is too narrow */
+    margin: 20px auto; /* Center-aligns the container */
+    max-width: 1200px; /* Optional: max-width for alignment */
+}
+
+.feature-box-container1 {
+    background-image: url('images/bg.jpg'); /* Background color of the box */
+    border-radius: 9px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    flex: 1; /* Flex-grow: allows the boxes to grow and fill available space */
+    margin: 10px; /* Spacing between boxes */
+    max-width: calc(33.333% - 20px); /* Ensures three items fit per row with space for margins */
+    box-sizing: border-box; /* Includes padding and border in element's total width and height */
+}
+
+.feature-image-wrapper1 {
+    flex-shrink: 0; /* Prevent image from shrinking */
+    display: flex;
+    align-items: center; /* Center image vertically */
+    justify-content: center; /* Center image horizontally */
+    margin-bottom: 20px; /* Space between image and text */
+}
+
+.feature-image-wrapper1 img {
+    width: 150px; /* Adjust to fit container width */
+    height: 150px; /* Adjust to fit container height */
+    border-radius: 110%; /* Circular image */
+    object-fit: cover; /* Maintain aspect ratio */
+}
+   .bo{
+    font-size: 1.5rem;
+    
+
+   } 
+   .logo{
+    width: 50px;
+   }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="text-white body-font">
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+            <a href="#" class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
+                <img class="logo" src="images/logo1.png" alt="Logo" class="h-10 w-10 rounded-full">
+                <span class="ml-3 text-xl">Spiritual Aura</span>
+            </a>
+            <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
+                <a href="#" class="mr-5 home-link">Home</a>
+                <br>
+                <a href="about.html" class="mr-5 ">About</a>
+                <br>
+                <a href="profile.html" class="mr-5 ">Profile</a>
+            </nav>
+            <a href="title.html" class="inline-flex items-center bg-indigo-600 text-white border-0 py-2 px-4 focus:outline-none hover:bg-indigo-700 rounded shadow-md transition duration-200 ease-in-out">
+                Logout
+            </a>
+        </div>
+    </header>
+<hr class="line">
+    <!-- Meditation Thought -->
+    <section class="py-12 meditation-thought-section">
+        <h1 class="header">Welcome, Make it your year with Spiritual Aura</h1>
+        <div class="container mx-auto px-5">
+            <div class="text-center">
+                <div class="thought-box">
+                    <p id="meditation-thought" class="thought-text">Loading meditation thought...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Line Between Sections -->
+    
+
+    <!-- Feature Box -->
+    <section id="Features" class="py-12">
+        <div class="container mx-auto">
+            <div>
+                <h1 class="explore">Explore our Features</h1>
+            </div>
+            <a href="timer.html" class="feature-box">
+                <div class="feature-image-wrapper">
+                    <img src="https://play-lh.googleusercontent.com/5nhGeNbFEhYY63llcC_sgnXkgwnWRqQ6tshDg8ySTf-vHWK-DPGMqwGrnR9ca670eSYb" alt="Timer">
+                </div>
+                <div class="feature-content">
+                    <h2>Timer</h2>
+                    <p>Set your meditation time with our easy-to-use timer. Customize intervals to fit your practice needs.</p>
+                </div>
+            </a>
+            <a href="playlist.html" class="feature-box">
+                <div class="feature-image-wrapper">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQo9B1yaC9xK0UnxEU6QmUOgylROzXp-uBAdmEwzjxafABeuN4OcuHSNuq34-sIcRusCC4&usqp=CAU" alt="Music">
+                </div>
+                <div class="feature-content">
+                    <h2>Music</h2>
+                    <p>Immerse yourself in calming music specially curated to enhance your meditation experience.</p>
+                </div>
+            </a>
+            <a href="pranayam.html" class="feature-box">
+                <div class="feature-image-wrapper">
+                    <img src="https://himalayanyoganepal.com/wp-content/uploads/2022/05/pranayama.jpg" alt="Pranayama">
+                </div>
+                <div class="feature-content">
+                    <h2>Pranayama</h2>
+                    <p>Learn and practice breathing techniques that help balance your mind and body.</p>
+                </div>
+            </a>
+            <a href="quote.html" class="feature-box">
+                <div class="feature-image-wrapper">
+                    <img src="https://www.shutterstock.com/image-vector/quotation-mark-symbol-double-quotes-260nw-235529839.jpg" alt="Quotes">
+                </div>
+                <div class="feature-content">
+                    <h2>Quotes</h2>
+                    <p>Get inspired with daily quotes to keep you motivated during your meditation journey.</p>
+                </div>
+            </a>
+            <a href="blog.html" class="feature-box">
+                <div class="feature-image-wrapper">
+                    <img src="https://t4.ftcdn.net/jpg/03/49/37/73/360_F_349377375_ffnj0RHK52KsooH7IBdtpjNtdEP7bKM7.jpg" alt="Blog">
+                </div>
+                <div class="feature-content">
+                    <h2>Blog</h2>
+                    <p>Insights, techniques, and inspiration for enhancing mindfulness and well-being through meditation practices.</p>
+                </div>
+            </a>
+            <a href="recent.html" class="feature-box">
+                <div class="feature-image-wrapper">
+                    <img src="https://www.shutterstock.com/image-vector/recent-event-history-260nw-1216471801.jpg" alt="Recent">
+                </div>
+                <div class="feature-content">
+                    <h2>Recent</h2>
+                    <p>Stay updated with the latest features and updates from our app.</p>
+                </div>
+            </a>
+            <!-- Divider Line -->
+          <br>
+          <br>
+          <br>
+          <br>
+        </div>
+    </section>
+    <section class="feature-row1">
+        <div class="feature-box-container1">
+            <div class="feature-image-wrapper1">
+                <img src="images/b2.png" alt="Mind Care Image">
+            </div>
+            <div class="feature-content1">
+                <h2 class="bo">Everything Your Mind Needs</h2>
+                <p>Take care of your mental health with proven courses and expert-led guidance to help you meet your goals.</p>
+            </div>
+        </div>
+        <div class="feature-box-container1">
+            <div class="feature-image-wrapper1">
+                <img src="images/b1.png" alt="Mind Care Image">
+            </div>
+            <div class="feature-content1">
+                <h2 class="bo" >Have more good days</h2>
+                <p>Let go of everyday stress and anxiety with 500+ guided meditations and programs.</p>
+            </div>
+        </div>
+        <div class="feature-box-container1">
+            <div class="feature-image-wrapper1">
+                <img src="images/b3.png" alt="Mind Care Image">
+            </div>
+            <div class="feature-content1">
+                <h2 class="bo">Get the sleep of your dreams</h2>
+                <p>Sleep more soundly every night with bedtime meditations, exercises, and relaxing sounds.</p>
+            </div>
+        </div>
+    </section>
+    
+    
+    
+   
+    
+        
+    <hr class="line2">
+    
+
+ 
+    <!-- User Feedback -->
+    <section >
+        <div class="container px-5 mx-auto">
+            <h2 class="text-2xl font-medium title-font text-white text-center mb-12">User Feedback</h2>
+            <div class="feedback-form-container">
+                <h3 class="text-lg font-semibold text-white mb-4">Submit Your Feedback</h3>
+                <form id="feedback-form" class="space-y-4">
+                    <div>
+                        <label for="name" class="block text-white mb-1">Name</label>
+                        <input type="text" id="name" name="name" class="w-full p-2 rounded bg-gray-600 text-white border border-gray-500" required>
+                    </div>
+                    <div>
+                        <label for="feedback" class="block text-white mb-1">Feedback</label>
+                        <textarea id="feedback" name="feedback" rows="4" class="w-full p-2 rounded bg-gray-600 text-white border border-gray-500" required></textarea>
+                    </div>
+                    <button type="submit" class="w-full py-2 px-4 bg-indigo-600 text-white rounded hover:bg-indigo-700 focus:outline-none">Submit</button>
+                </form>
+            </div>
+
+            <div id="feedback-list" class="mt-12 space-y-4">
+                <h3 class="text-lg font-semibold text-white mb-4">Previous Feedback</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white body-font py-6">
+        <div class="container mx-auto flex justify-center">
+            <p class="text-sm text-gray-400">© 2024 Meditation and Pranayam — All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+            document.addEventListener("DOMContentLoaded", function() {
+            // Smooth scroll to features section when "Home" link is clicked
+            document.querySelector('.home-link').addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector('#Features').scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+            const thoughtElement = document.getElementById('meditation-thought');
+
+            // Array of meditation thoughts
+            const meditationThoughts = [
+            
+            "Peace begins with a smile ",
+            "Inhale the future, exhale the past.",
+            "Meditation is a journey within.",
+            "Embrace the present moment fully.",
+            "Quiet the mind, and the soul will speak.",
+            "Find the silence within, and you’ll find your peace.",
+            "You are the sky. Everything else – it’s just the weather.",
+            "Embrace the present moment.",
+                "Breathe deeply and let go.",
+                "Find peace in simplicity.",
+                "Let your thoughts drift like clouds.",
+                "Center yourself and focus inward.",
+
+            ];
+
+            // Function to get a random meditation thought
+            function getRandomThought() {
+                const randomIndex = Math.floor(Math.random() * meditationThoughts.length);
+                return meditationThoughts[randomIndex];
+            }
+
+            // Function to display the meditation thought
+            function displayThought() {
+                thoughtElement.textContent = getRandomThought();
+            }
+
+            // Display a new meditation thought on page load
+            displayThought();
+
+            // Handle feedback form submission
+            const feedbackForm = document.getElementById('feedback-form');
+            const feedbackList = document.getElementById('feedback-list');
+
+            feedbackForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const formData = new FormData(feedbackForm);
+                const name = formData.get('name');
+                const feedback = formData.get('feedback');
+
+                const feedbackItem = document.createElement('div');
+                feedbackItem.classList.add('bg-gray-700', 'p-4', 'rounded', 'shadow-md');
+                feedbackItem.innerHTML = `<p><strong>${name}</strong></p><p>${feedback}</p>`;
+                feedbackList.appendChild(feedbackItem);
+
+                // Clear form
+                feedbackForm.reset();
+            });
+        });
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/Sign Up</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Login Page -->
+    <div id="login-page" class="form-page">
+        <div class="form-container">
+            <div class="form-box">
+                <div class="logo">
+                    <img class="img" src="images/logo1.png" alt="Logo">
+                </div>
+                <h2>Login</h2>
+                
+                <div id="meditation-thought" class="meditation-thought-box">
+                    <!-- The meditation thought will appear here -->
+                </div>
+                <div class="box-container">
+                    <form id="login-form" action="/login" method="post">
+                        <div class="input-group">
+                            <input type="text" name="username" placeholder="Username" required>
+                        </div>
+                        <div class="input-group">
+                            <div class="input-box">
+                                <input type="password" id="login-password" name="password" placeholder="Password" required>
+                                <span class="eye-icon" onclick="togglePasswordVisibility('login-password')">👁️</span>
+                            </div>
+                        </div>
+                        <div class="error-message" id="login-error-message"></div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="remember-me" name="remember">
+                            <label for="remember-me">Remember me</label>
+                        </div>
+                        <button type="submit" >Login</button>
+                    </form>
+                </div>
+                <p>Don't have an account? <a href="#" id="go-to-signup">Sign up</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sign Up Page -->
+    <div id="signup-page" class="form-page">
+        <div class="form-container">
+            <div class="form-box">
+                <div class="logo">
+                    <img src="images/logo1.png" alt="Logo">
+                </div>
+                <h2>Sign Up</h2>
+                <div class="box-container">
+                    <form id="signup-form" action="/signup" method="post">
+                        <div class="input-group">
+                            <input type="text" name="username" placeholder="Username" required>
+                        </div>
+                        <div class="input-group">
+                            <input type="email" name="email" placeholder="Email" required>
+                        </div>
+                        <div class="input-group">
+                            <div class="input-box">
+                                <input type="password" id="signup-password" name="password" placeholder="Password" required>
+                                <span class="eye-icon" onclick="togglePasswordVisibility('signup-password')">👁️</span>
+                            </div>
+                        </div>
+                        <div class="error-message" id="signup-error-message"></div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="terms" name="terms" required>
+                            <label for="terms">I agree to the Terms and Conditions</label>
+                        </div>
+                        <button type="submit">Sign Up</button>
+                    </form>
+                </div>
+                <p>Already have an account? <a href="front.html" id="go-to-login">Login</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Array of motivational meditation thoughts
+        const meditationThoughts = [
+            "Breathe in calmness, breathe out tension.",
+            "Peace begins with a smile.",
+            "Inhale the future, exhale the past.",
+            "Meditation is a journey within.",
+            "Embrace the present moment fully.",
+            "Quiet the mind, and the soul will speak.",
+            "Find the silence within, and you’ll find your peace.",
+            "You are the sky. Everything else – it’s just the weather."
+        ];
+
+        // Function to display a random thought
+        function displayRandomThought() {
+            const randomIndex = Math.floor(Math.random() * meditationThoughts.length);
+            const randomThought = meditationThoughts[randomIndex];
+            document.getElementById('meditation-thought').innerText = randomThought;
+        }
+
+        // Call the function when the page loads
+        window.onload = displayRandomThought;
+
+        // JavaScript to toggle between login and signup forms
+        const loginPage = document.getElementById('login-page');
+        const signupPage = document.getElementById('signup-page');
+        const goToSignupLink = document.getElementById('go-to-signup');
+        const goToLoginLink = document.getElementById('go-to-login');
+        const signupForm = document.getElementById('signup-form');
+        const loginForm = document.getElementById('login-form');
+
+        // Show signup page and hide login page
+        goToSignupLink.addEventListener('click', function () {
+            loginPage.style.display = 'none';
+            signupPage.style.display = 'block';
+        });
+
+        // Show login page and hide signup page
+        goToLoginLink.addEventListener('click', function () {
+            signupPage.style.display = 'none';
+            loginPage.style.display = 'block';
+        });
+
+        // Handle sign-up form submission
+        signupForm.addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent the default form submission
+
+            // Simulate a sign-up process (replace with actual AJAX request)
+            setTimeout(function() {
+                // Store user info in localStorage
+                const username = signupForm.querySelector('input[name="username"]').value;
+                const password = signupForm.querySelector('input[name="password"]').value;
+                localStorage.setItem('username', username);
+                localStorage.setItem('password', password);
+
+                // After "sign-up", automatically redirect to login page
+                signupPage.style.display = 'none';
+                loginPage.style.display = 'block';
+
+                // Pre-fill the login form with the signed-up username
+                document.querySelector('#login-page input[name="username"]').value = username;
+            }, 1000); // Simulated delay
+        });
+
+        // Handle login form submission
+        loginForm.addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent the default form submission
+
+            const username = loginForm.querySelector('input[name="username"]').value;
+            const password = loginForm.querySelector('input[name="password"]').value;
+            const storedUsername = localStorage.getItem('username');
+            const storedPassword = localStorage.getItem('password');
+            const errorMessage = document.getElementById('login-error-message');
+
+            if (username === storedUsername && password === storedPassword) {
+                // Password matches, redirect to new file
+                window.location.href = 'front.html'; // Redirect to the new file
+            } else {
+                // Show error message
+                errorMessage.innerText = 'Invalid username or password';
+                setTimeout(() => {
+                    errorMessage.innerText = '';
+                }, 5000); // Hide after 5 seconds
+            }
+        });
+
+        // Function to toggle password visibility
+        function togglePasswordVisibility(id) {
+            const passwordField = document.getElementById(id);
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+            } else {
+                passwordField.type = 'password';
+            }
+        }
+
+        // Initial view: show login page
+        loginPage.style.display = 'block';
+        signupPage.style.display = 'none';
+    </script>
+
+</body>
+</html>

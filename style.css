@@ -1,0 +1,135 @@
+/* General styles */
+body {
+    margin: 0;
+    padding: 0;
+    
+    background: url('images/login.jpeg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    
+}
+
+/* Form page container */
+.form-page {
+    display: none;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.2); /* Slightly transparent white background */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+    text-align: center;
+    backdrop-filter: blur(10px); /* Apply blur effect */
+}
+
+
+/* Logo image */
+.logo img {
+    display: block;
+    margin: 0 auto 20px;
+    width: 80px; /* Adjust as needed */
+    height: auto;
+}
+
+/* Form headings */
+h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #151313;
+    
+}
+
+/* Meditation thought box */
+.meditation-thought-box {
+    font-style: normal;
+    font-size: 27px;
+    color: #131212;
+    margin-bottom: 30px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 400;
+
+}
+
+/* Input group */
+.input-group {
+    margin-bottom: 14px;
+}
+
+.input-box {
+    position: relative;
+    font-family: monospace;
+    font-weight: 500;
+}
+
+input[type="text"], 
+input[type="email"], 
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.eye-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+/* Error message */
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Checkbox group */
+.checkbox-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 15px;
+    color: #020202;
+}
+
+/* Button styling */
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #3c8a40;
+}
+
+/* Links */
+p {
+    font-size: 15px;
+    color: #161515;
+}
+
+a {
+    color: #121312;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

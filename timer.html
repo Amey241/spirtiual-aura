@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meditation Timer</title>
+    <style>
+        body {
+            background-image: url('images/timer.jpg');
+            background-size: cover;
+            font-family: 'Arial', sans-serif;
+            background-attachment:scroll;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Ensure full height for centering */
+        }
+
+        .container {
+            position: absolute;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Slightly reduced shadow opacity */
+            width: 100%;
+            height: auto;
+            max-width: 700px;
+            text-align: center;
+            background-color: rgba(60, 60, 60, 0.3); /* Adjust the alpha (0.7) to control transparency */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            bottom: auto;
+            top: 100px;
+            backdrop-filter: blur(8px); /* Apply blur effect */
+        }
+
+        header {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(60, 60, 60, 0.4);
+            width: 100%;
+            max-width: 800px;
+            padding: 10px 20px;
+            text-align: center;
+            color: #000000;
+            font-size: 1.75rem;
+            border-bottom: 1px solid #c8c0c0;
+            font-family:'Big shoulders Display',sans-serif;
+            font-weight: bold;
+            
+
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2rem;
+            color: #c8c0c0;
+            font-family:monospace
+        }
+
+        .time-picker {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .time-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .time-column input {
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            font-size: 1.2rem;
+            border: none;
+            background: #eee;
+            border-radius: 10px;
+            color: #e1c6c6;
+        }
+
+        .time-column label {
+            margin-top: 5px;
+            font-size: 0.9rem;
+            color: #fcfbfb;
+        }
+
+        #timer-display {
+            font-size: 3rem;
+            margin: 20px 0;
+            color: #c8c0c0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+            position: relative;
+        }
+
+        .digit {
+            width: 60px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            font-size: 3rem;
+            color: #333;
+            position: relative;
+            overflow: hidden;
+            margin: 0 5px;
+        }
+
+        .digit:before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.5);
+            transform: translateY(100%);
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .digit.animating:before {
+            transform: translateY(0);
+        }
+
+        .controls {
+            margin-top: 20px;
+        }
+
+        .controls button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #0b0a0a;
+            color: white;
+            transition: background-color 0.3s;
+            
+        }
+
+        .controls button:hover {
+            background-color: #0b0a0a;
+        }
+
+        .controls button.pause {
+            background-color: #0b0a0a;
+        }
+
+        .controls button.reset {
+            background-color: #0b0a0a;
+        }
+
+        .slider-container {
+            position: relative;
+            overflow: hidden;
+            margin-top: 20px;
+            text-align: center;
+            font-style: oblique;
+            
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.3s ease;
+        }
+
+        .slide {
+            flex: 0 0 100%;
+            box-sizing: border-box;
+            padding: 10px;
+            position: relative;
+        }
+
+        .slide img {
+            max-width: 100%;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .slider-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .slider-controls button {
+            background-color: #444;
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            color: #f0f0f0;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .slider-controls button:hover {
+            background-color: #666;
+        }
+
+        .im {
+            width: 100px;
+        }
+
+        .im1 {
+            width: 150px;
+        }
+        .back-btn{
+            position: absolute;
+            top: 2px;
+            left: 20px;
+            padding: 10px 20px;
+            background-color: #0d1413;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.6em;
+         }
+        .ok{
+            color: #fff;
+            font-family: monospace;
+            font-size: 20px;
+        }
+.th{
+    color: #fff;
+    font-family: monospace;
+    font-style:inherit;
+}
+.header{
+    font-size:30px;
+    font-style: inherit;
+    text-transform: uppercase;
+}
+    </style>
+</head>
+<body>
+
+<header class="header">
+    Meditation Timer
+    <button class="back-btn" onclick="window.location.href='front.html';">Back</button>
+</header>
+
+<div class="container">
+    
+    <h1 class="th">Timer</h1>
+
+    <div class="time-picker">
+        <div class="time-column">
+            <input type="number" id="hours" placeholder="00" min="0" max="23">
+            <label>Hours</label>
+        </div>
+        <div class="time-column">
+            <input type="number" id="minutes" placeholder="00" min="0" max="59">
+            <label>Minutes</label>
+        </div>
+        <div class="time-column">
+            <input type="number" id="seconds" placeholder="00" min="0" max="59">
+            <label>Seconds</label>
+        </div>
+    </div>
+
+    <div id="timer-display">
+        <div class="digit" id="hours-display">00</div>
+        <div class="digit" id="minutes-display">00</div>
+        <div class="digit" id="seconds-display">00</div>
+    </div>
+
+    <div class="controls">
+        <button id="start-timer">Start Timer</button>
+        <button id="pause-timer" class="pause">Pause</button>
+        <button id="reset-timer" class="reset">Reset</button>
+    </div>
+
+    <!-- Slider for Starting Bell -->
+    <div>
+        <div class="slider-container">
+            <div class="slider" id="starting-bell-slider">
+                <div class="slide">
+                    <img class="im" src="images/none.png" alt="Bell 2">
+                    <audio id="start-sound-2" src=""></audio>
+                </div>
+                <div class="slide">
+                    <img class="im" src="images/bell1.png" alt="Bell 1">
+                    <audio id="start-sound-1" src="music/bell1 (1).mp3"></audio>
+                </div>
+                <div class="slide">
+                    <img class="im" src="images/bell2.png" alt="Bell 2">
+                    <audio id="start-sound-2" src="music/bell1 (2).mp3"></audio>
+                </div>
+                <div class="slide">
+                    <img class="im" src="images/bell3.png" alt="Bell 3">
+                    <audio id="start-sound-3" src="music/bell1 (4).mp3"></audio>
+                </div>
+            </div>
+            <div class="slider-controls">
+                <button id="prev-starting-bell">&lt;</button>
+                <button id="next-starting-bell">&gt;</button>
+            </div>
+            <label class="ok" for="starting-bell">CHOOSE STARTING BELL:</label>
+        </div>
+    </div>
+    
+
+    <!-- Slider for Ending Bell -->
+    <div>
+        <div class="slider-container">
+            <div class="slider" id="ending-bell-slider">
+                <div class="slide">
+                    <img class="im" src="images/none.png" alt="Bell 2">
+                    <audio id="start-sound-2" src=""></audio>
+                </div>
+                <div class="slide">
+                    <img class="im" src="images/bell2.png" alt="Ending Bell 1">
+                    <audio id="end-sound-1" src="music/bell1 (2).mp3"></audio>
+                </div>
+                <div class="slide">
+                    <img class="im" src="images/bell3.png" alt="Ending Bell 2">
+                    <audio id="end-sound-2" src="music/bell1 (4).mp3"></audio>
+                </div>
+                <div class="slide">
+                    <img class="im" src="images/bell1.png" alt="Ending Bell 3">
+                    <audio id="end-sound-3" src="music/bell1 (1).mp3"></audio>
+                </div>
+            </div>
+            <div class="slider-controls">
+                <button id="prev-ending-bell">&lt;</button>
+                <button id="next-ending-bell">&gt;</button>
+            </div>
+            <label class="ok" for="ending-bell">CHOOSE ENDING BELL:</label>
+        </div>
+    </div>
+
+    <!-- Slider for Music -->
+    <div>
+        <div class="slider-container">
+            <div class="slider" id="music-slider">
+                <div class="slide">
+                    <img class="im" src="images/none.png" alt="Bell 2">
+                    <audio id="start-sound-2" src=""></audio>
+                </div>
+                <div class="slide">
+                    <img class="im1" src="images/music1 (1).jpeg" alt="OM Chanting">
+                    <audio id="music-1" src="music/music1.mp3"></audio>
+                </div>
+                <div class="slide">
+                    <img class="im1" src="images/music1 (2).jpg" alt="Waterfall">
+                    <audio id="music-2" src="music/music2.mp3"></audio>
+                </div>
+                <div class="slide">
+                    <img class="im1" src="images/music1 (3).jpg" alt="Rain">
+                    <audio id="music-3" src="music/music3.mp3"></audio>
+                </div>
+            </div>
+            <div class="slider-controls">
+                <button id="prev-music">&lt;</button>
+                <button id="next-music">&gt;</button>
+            </div>
+            <label class="ok" for="background-music">CHOOSE BACKGROUND MUSIC:</label>
+        </div>
+    </div>
+    
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        let intervalId;
+        let remainingTime = 0;
+        let isPaused = false;
+        let startSound = new Audio();
+        let endSound = new Audio();
+        let backgroundMusic = new Audio();
+
+        function updateDisplay(hours, minutes, seconds) {
+            const hoursElem = document.getElementById('hours-display');
+            const minutesElem = document.getElementById('minutes-display');
+            const secondsElem = document.getElementById('seconds-display');
+
+            hoursElem.textContent = String(hours).padStart(2, '0');
+            minutesElem.textContent = String(minutes).padStart(2, '0');
+            secondsElem.textContent = String(seconds).padStart(2, '0');
+
+            // Add animation class
+            hoursElem.classList.add('animating');
+            minutesElem.classList.add('animating');
+            secondsElem.classList.add('animating');
+
+            // Remove animation class after animation duration
+            setTimeout(() => {
+                hoursElem.classList.remove('animating');
+                minutesElem.classList.remove('animating');
+                secondsElem.classList.remove('animating');
+            }, 600); // Match the animation duration
+        }
+
+        function startTimer() {
+            const hours = parseInt(document.getElementById('hours').value) || 0;
+            const minutes = parseInt(document.getElementById('minutes').value) || 0;
+            const seconds = parseInt(document.getElementById('seconds').value) || 0;
+
+            if (hours === 0 && minutes === 0 && seconds === 0 && remainingTime === 0) {
+                return;
+            }
+
+            if (!isPaused && startSound.src) {
+                startSound.play(); // Play starting bell sound
+            }
+
+            if (!isPaused && backgroundMusic.src) {
+                backgroundMusic.play(); // Start background music when timer starts
+            }
+
+            backgroundMusic.loop = true; // Ensure the music loops continuously
+
+            if (!isPaused) {
+                remainingTime = (hours * 3600) + (minutes * 60) + seconds;
+            }
+
+            clearInterval(intervalId);
+            intervalId = setInterval(() => {
+                if (remainingTime > 0) {
+                    remainingTime--;
+                    const hrs = Math.floor(remainingTime / 3600);
+                    const mins = Math.floor((remainingTime % 3600) / 60);
+                    const secs = remainingTime % 60;
+                    updateDisplay(hrs, mins, secs);
+                } else {
+                    clearInterval(intervalId);
+                    updateDisplay(0, 0, 0);
+                    if (endSound.src) {
+                        backgroundMusic.pause(); // Stop the background music
+                        console.log('Playing ending bell:', endSound.src); // Debugging log
+                        endSound.play(); // Play ending bell sound
+                    }
+                }
+            }, 1000);
+        }
+
+        function pauseTimer() {
+            clearInterval(intervalId);
+            backgroundMusic.pause(); // Pause background music
+            isPaused = true;
+        }
+
+        function resetTimer() {
+            clearInterval(intervalId);
+            updateDisplay(0, 0, 0);
+            remainingTime = 0;
+            backgroundMusic.pause(); // Stop background music
+            backgroundMusic.currentTime = 0; // Reset the music position
+            isPaused = false;
+        }
+
+        function selectStartingBell(index) {
+            const bells = document.querySelectorAll('#starting-bell-slider .slide audio');
+            if (index >= 0 && index < bells.length) {
+                const selectedBell = bells[index];
+                selectedBell.load(); // Make sure the audio is fully loaded before assigning
+                startSound.src = selectedBell.src;
+                console.log(`Starting bell selected: ${startSound.src}`); // Debugging log
+
+                // Mark selected bell visually
+                bells.forEach((bell, i) => {
+                    if (i === index) bell.parentElement.classList.add('selected');
+                    else bell.parentElement.classList.remove('selected');
+                });
+            }
+        }
+
+        function selectEndingBell(index) {
+            const bells = document.querySelectorAll('#ending-bell-slider .slide audio');
+            if (index >= 0 && index < bells.length) {
+                const selectedBell = bells[index];
+                selectedBell.load(); // Make sure the audio is fully loaded before assigning
+                endSound.src = selectedBell.src;
+                console.log(`Ending bell selected: ${endSound.src}`); // Debugging log
+
+                // Mark selected bell visually
+                bells.forEach((bell, i) => {
+                    if (i === index) bell.parentElement.classList.add('selected');
+                    else bell.parentElement.classList.remove('selected');
+                });
+            }
+        }
+
+        function selectMusic(index) {
+            const musics = document.querySelectorAll('#music-slider .slide audio');
+            if (index >= 0 && index < musics.length) {
+                backgroundMusic.src = musics[index].src;
+                console.log(`Background music selected: ${backgroundMusic.src}`); // Debugging log
+
+                // Mark selected music visually
+                musics.forEach((music, i) => {
+                    if (i === index) music.parentElement.classList.add('selected');
+                    else music.parentElement.classList.remove('selected');
+                });
+            }
+        }
+
+        document.getElementById('start-timer').addEventListener('click', startTimer);
+        document.getElementById('pause-timer').addEventListener('click', pauseTimer);
+        document.getElementById('reset-timer').addEventListener('click', resetTimer);
+
+        let startingBellIndex = 0;
+        let endingBellIndex = 0;
+        let musicIndex = 0;
+
+        document.getElementById('prev-starting-bell').addEventListener('click', () => {
+            startingBellIndex = (startingBellIndex > 0) ? startingBellIndex - 1 : document.querySelectorAll('#starting-bell-slider .slide').length - 1;
+            document.getElementById('starting-bell-slider').style.transform = `translateX(-${startingBellIndex * 100}%)`;
+            selectStartingBell(startingBellIndex);
+        });
+
+        document.getElementById('next-starting-bell').addEventListener('click', () => {
+            startingBellIndex = (startingBellIndex < document.querySelectorAll('#starting-bell-slider .slide').length - 1) ? startingBellIndex + 1 : 0;
+            document.getElementById('starting-bell-slider').style.transform = `translateX(-${startingBellIndex * 100}%)`;
+            selectStartingBell(startingBellIndex);
+        });
+
+        document.getElementById('prev-ending-bell').addEventListener('click', () => {
+            endingBellIndex = (endingBellIndex > 0) ? endingBellIndex - 1 : document.querySelectorAll('#ending-bell-slider .slide').length - 1;
+            document.getElementById('ending-bell-slider').style.transform = `translateX(-${endingBellIndex * 100}%)`;
+            selectEndingBell(endingBellIndex);
+        });
+
+        document.getElementById('next-ending-bell').addEventListener('click', () => {
+            endingBellIndex = (endingBellIndex < document.querySelectorAll('#ending-bell-slider .slide').length - 1) ? endingBellIndex + 1 : 0;
+            document.getElementById('ending-bell-slider').style.transform = `translateX(-${endingBellIndex * 100}%)`;
+            selectEndingBell(endingBellIndex);
+        });
+
+        document.getElementById('prev-music').addEventListener('click', () => {
+            musicIndex = (musicIndex > 0) ? musicIndex - 1 : document.querySelectorAll('#music-slider .slide').length - 1;
+            document.getElementById('music-slider').style.transform = `translateX(-${musicIndex * 100}%)`;
+            selectMusic(musicIndex);
+        });
+
+        document.getElementById('next-music').addEventListener('click', () => {
+            musicIndex = (musicIndex < document.querySelectorAll('#music-slider .slide').length - 1) ? musicIndex + 1 : 0;
+            document.getElementById('music-slider').style.transform = `translateX(-${musicIndex * 100}%)`;
+            selectMusic(musicIndex);
+        });
+
+        // Initialize sliders
+        selectStartingBell(startingBellIndex);
+        selectEndingBell(endingBellIndex);
+        selectMusic(musicIndex);
+    });
+</script>
+
+</body>
+</html>

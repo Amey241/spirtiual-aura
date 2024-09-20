@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>About Us</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #f0f0f0;
+            background-image: url('images/bg.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            font-family: 'Big Shoulders Display', sans-serif;
+            margin: 0;
+            font-family:'Big shoulders Display',sans-serif; ;
+        }
+        .hero-bg {
+            background-image: url('https://source.unsplash.com/1600x900/?team');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            position: relative;
+            width: 100%;
+            z-index: -1;
+        }
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #fff;
+        }
+        .hero-content h1 {
+            font-size: 3rem;
+            margin: 0;
+        }
+        .hero-content p {
+            font-size: 1.25rem;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: bolder;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+
+        }
+        .description-text {
+            text-align: center;
+            font-size: 1.3rem;
+            color: #fff;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            font-family:monospace;
+        }
+        .team-member {
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .team-member h3 {
+
+            margin-top: 0.5rem;
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+        .team-member p {
+            font-size: 1rem;
+            color: #fff
+        }
+        .contact-form-container {
+            background-color: rgba(55, 55, 55, 0.8);
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+        .contact-form-container h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .header {
+            
+            color: #fff;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            background: rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1)
+        }
+        .header a {
+     
+            font-style: italic;
+            text-align: center;
+            color: #fff;
+            text-decoration: none;
+        }
+        .header a:hover {
+            text-decoration: underline;
+        }
+        .header .back-button {
+            background-color: #444;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .header .back-button:hover {
+            background-color: #555;
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <button class="back-button" onclick="window.location.href='front.html';">&#8592;</button>
+        <nav>
+           
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    
+    <!-- About Us Section -->
+    <section class="py-12">
+        <div class="container mx-auto px-5">
+            <h2 class="section-title">Our Story</h2>
+            <p class="description-text">
+                Welcome to Spiritual Aura, a space dedicated to enhancing your meditation and mindfulness journey. Our mission is to provide a holistic approach to mental well-being through a range of tools and resources designed to help you achieve inner peace and balance. Whether you are new to meditation or a seasoned practitioner, we offer a variety of features to support your practice, including guided meditations, breathing exercises, and insightful quotes.
+                <br><br>
+                Our team is passionate about creating a supportive environment where individuals can grow and thrive. We believe in the transformative power of meditation and are committed to making these practices accessible to everyone. Join us on this journey towards a more mindful and fulfilling life.
+            </p>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-12">
+        <div class="container mx-auto px-5">
+            <h2 class="section-title">Meet Our Team</h2>
+            <div class="flex flex-wrap justify-center gap-8">
+                <!-- Team Member 1 -->
+                <div class="team-member">
+                    <img src="images/about1.jpg" alt="Team Member 1">
+                    <h3>Vikas Bhagat</h3>
+                    <p></p>
+                </div>
+                <!-- Team Member 2 -->
+                <div class="team-member">
+                    <img src="images/about2.jpg" alt="Team Member 2">
+                    <h3>Amey Badgujar</h3>
+                    <p></p>
+                </div>
+                <!-- Team Member 3 -->
+                <div class="team-member">
+                    <img src="images/about3.jpg" alt="Team Member 3">
+                    <h3>Shivam Jayaswal</h3>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-12">
+        <div class="container mx-auto px-5">
+            <div class="contact-form-container">
+                <h2>Contact Us</h2>
+                <form id="contact-form" class="space-y-4">
+                    <div>
+                        <label for="name" class="block text-white mb-1">Name</label>
+                        <input type="text" id="name" name="name" class="w-full p-2 rounded bg-gray-600 text-white border border-gray-500" required>
+                    </div>
+                    <div>
+                        <label for="email" class="block text-white mb-1">Email</label>
+                        <input type="email" id="email" name="email" class="w-full p-2 rounded bg-gray-600 text-white border border-gray-500" required>
+                    </div>
+                    <div>
+                        <label for="message" class="block text-white mb-1">Message</label>
+                        <textarea id="message" name="message" rows="4" class="w-full p-2 rounded bg-gray-600 text-white border border-gray-500" required></textarea>
+                    </div>
+                    <button type="submit" class="w-full py-2 px-4 bg-indigo-600 text-white rounded hover:bg-indigo-700 focus:outline-none">Send</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white body-font py-6">
+        <div class="container mx-auto flex justify-center">
+            <p class="text-sm text-gray-400">© 2024 Meditation and Pranayam — All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Creative Profile Page</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            transition: background-image 0.5s ease-in-out;
+       
+        }
+
+        .profile-page {
+            position: relative;
+            width: 500px;
+            height: 620px;
+            border-radius: 20px;
+            background-color: #fff; /* Keeping white background for profile page */
+            box-shadow: 0 12px 24px rgba(86, 56, 56, 0.1);
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .profile-page:hover {
+            transform: translateY(-10px);
+        }
+
+        .header {
+            height: 60px;
+            position: relative;
+            width: 100%;;
+            padding: 15px;
+            background-size: cover;
+            background-position: center;
+            color: rgb(249, 247, 247);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            transition: background-image 0.5s ease-in-out;
+            background-color: #2e2828;
+            font-family:monospace;
+           font-size:20px;
+            text-align: center;
+            
+        }
+
+        .back-button {
+            position: absolute;
+            left: 15px;
+            background: none;
+            border: none;
+            color: rgb(237, 225, 225);
+            font-size: 20px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .profile-page .content__cover {
+            width: 100px;
+            height: 60px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .profile-page .content__avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: center;
+            margin: -60px auto 10px;
+            border: 5px solid white;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 1);
+        }
+
+        .profile-page .content__title h1 {
+            margin: 10px 0;
+            font-size: 28px;
+            font-weight: 700;
+            color: #2e2828;
+        }
+
+        .profile-page .content__title span {
+            font-size: 14px;
+            color: #776e6e;
+        }
+
+        .profile-page .content__description {
+            margin: 20px 0;
+            padding: 0 20px;
+            font-size: 18px;
+            color: #2e2828;
+        }
+
+        .profile-page .content__list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+            display: flex;
+            justify-content: space-around;
+            font-weight: 500;
+            color: #444;
+        }
+
+        .profile-page .content__list li span {
+            display: block;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .profile-page .content__actions a {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 30px;
+            border-radius: 30px;
+            font-size: 15px;
+            color: white;
+            background-color: #007bff; /* Button background color */
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .profile-page .content__actions a:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+        }
+
+        .footer {
+            width: 100%;
+            padding: 15px;
+            background-size: cover;
+            background-position: center;
+            color: #666;
+            text-align: center;
+            font-size: 14px;
+            box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .theme-switcher-button {
+            position: absolute;
+            bottom: 70px;
+            right: 20px;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .theme-switcher-button:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+        }
+
+        /* Theme classes */
+        .theme-blue {
+            background-image: url('images/profile1.jpg'); /* Background image for blue theme */
+        }
+
+        .theme-orange {
+            background-image: url('images/profile2.jpg'); /* Background image for orange theme */
+        }
+
+        .theme-purple {
+            background-image: url('images/bg.jpg'); /* Background image for purple theme */
+        }
+
+        .theme-green {
+            background-image: url('images/timer.jpg') /* Background image for green theme */
+        }
+    </style>
+</head>
+<body class="theme-blue">
+    <div class="profile-page">
+        <!-- Header with Back Button -->
+        <div class="header" style="background-image: url('images/header-blue.jpg');">
+            <button class="back-button" onclick="window.location.href='front.html';">&#8592;</button>
+            <h2>Profile</h2>
+        </div>
+
+        <!-- Main Profile Content -->
+        <div class="content__cover" style="background-image: url('');"></div>
+        <div class="content__avatar" style="background-image: url('images/profile.jpg');"></div>
+        <div class="content__title">
+            <h1>Vikas Bhagat</h1>
+            <span>Mumbai,India</span>
+        </div>
+        <div class="content__description">
+            <p>When meditation is mastered, the mind is unwavering like the flame of a candle in a windless place</p>
+        </div>
+        <ul class="content__list">
+            <li><span>15</span> Days</li>
+            <li><span>230</span> Minutes</li>
+            <li><span>7</span> Streak</li>
+        </ul>
+       <br>
+       <br>
+       <br>
+       
+
+        <!-- Footer -->
+        <div class="footer" style="background-image: url('images/footer-blue.jpg');">
+            &copy; 2024 Spiritual Aura. All Rights Reserved.
+        </div>
+
+        <!-- Theme Switcher Button -->
+        <button class="theme-switcher-button">Switch Theme</button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const switcherButton = document.querySelector(".theme-switcher-button");
+            const themes = ["theme-blue", "theme-orange", "theme-purple", "theme-green"];
+            let currentThemeIndex = themes.indexOf(document.body.classList[0]);
+
+            // Function to switch the theme
+            function switchTheme() {
+                const body = document.body;
+                const header = document.querySelector(".header");
+                const footer = document.querySelector(".footer");
+                const cover = document.querySelector(".content__cover");
+
+                // Remove the current theme
+                body.classList.remove(...themes);
+
+                // Get the next theme
+                currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+                const nextTheme = themes[currentThemeIndex];
+
+                // Add the new theme to the body
+                body.classList.add(nextTheme);
+
+                // Update header, cover, and footer images based on theme
+                switch (nextTheme) {
+                    case "theme-blue":
+                        header.style.backgroundImage = "url('images/header-blue.jpg')";
+                        cover.style.backgroundImage = "url('images/cover-blue.jpg')";
+                        footer.style.backgroundImage = "url('images/footer-blue.jpg')";
+                        break;
+                    case "theme-orange":
+                        header.style.backgroundImage = "url('images/header-orange.jpg')";
+                        cover.style.backgroundImage = "url('images/cover-orange.jpg')";
+                        footer.style.backgroundImage = "url('images/footer-orange.jpg')";
+                        break;
+                    case "theme-purple":
+                        header.style.backgroundImage = "url('images/header-purple.jpg')";
+                        cover.style.backgroundImage = "url('images/cover-purple.jpg')";
+                        footer.style.backgroundImage = "url('images/footer-purple.jpg')";
+                        break;
+                    case "theme-green":
+                        header.style.backgroundImage = "url('images/header-green.jpg')";
+                        cover.style.backgroundImage = "url('images/cover-green.jpg')";
+                        footer.style.backgroundImage = "url('images/footer-green.jpg')";
+                        break;
+                }
+            }
+
+            // Add event listener for the theme switcher button
+            switcherButton.addEventListener("click", switchTheme);
+        });
+    </script>
+</body>
+</html>
